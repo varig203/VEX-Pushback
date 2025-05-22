@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/misc.h"
 #include "robot/hardware.hpp"
 
 void motorControl_fn() {
@@ -16,6 +17,22 @@ void motorControl_fn() {
             example_motor.move_velocity(0); // Stops
         }
         pros::delay(20);
+    }
+}
+
+void incMC_fn() {
+    // inc_step is 10% of your max rpm so according to
+    // Cyrus you should use 600 rpm drive
+    static int curr_rpm = 600;
+    const int  inc_step = 60;
+    while (1) {
+        if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+            // increment up by 10% on rpm
+            // show on controller current speed and vibrate on press
+        } else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+            // increment down by 10% on rpm
+            // show on controller current speed and vibrate on press
+        }
     }
 }
 

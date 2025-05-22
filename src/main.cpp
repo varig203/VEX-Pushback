@@ -1,10 +1,9 @@
-#include "Entity/api.hpp"
 #include "main.h"
-#include "robodash/views/selector.hpp"
 #include "robot/autonomous.hpp"
 #include "robot/hardware.hpp"
 #include "robot/motorControl.hpp"
 #include "robot/solenoid.hpp"
+#include "teamlogo.h"
 
 /**********************************************************************
  * WELCOME TO ENTITY TEMPLATE! CHECKOUT THE GITHUB FOR DOCUMENTATION. *
@@ -19,12 +18,13 @@ rd::Selector autonSelector({//  Initalize Auton Selecton
                             {"Skills", skills}});
 
 rd::Console console; // Initalize RD console
+rd::Image   team_logo(&teamlogo, "Black Kid");
 
 // Runs initialization code when the program starts; all other competition modes are blocked, keep exec under few seconds
 void initialize() {
     chassis.calibrate(); // calibrate sensors
 
-    autonSelector.focus(); // Focuses Auton selector.
+    team_logo.focus(); // Focuses Image.
 }
 
 // Runs while the robot is disabled, following autonomous or opcontrol, and exits when the robot is enabled.
