@@ -2,9 +2,9 @@
 #include "Entity/api.hpp"
 
 // Motor groups
-pros::MotorGroup left_motors({}, pros::MotorGearset::blue);   // lLeft Chassis
-pros::MotorGroup right_motors({}, pros::MotorGearset::blue);  // Right Chassis
-pros::Motor      example_motor(20, pros::MotorGearset::blue); // example motor
+pros::MotorGroup left_motors({1, 2}, pros::MotorGearset::blue);     // lLeft Chassis
+pros::MotorGroup right_motors({-9, -10}, pros::MotorGearset::blue); // Right Chassis
+pros::Motor      example_motor(20, pros::MotorGearset::blue);       // example motor
 
 // Controller and Pistons
 pros::Controller controller(pros::E_CONTROLLER_MASTER); // Initialize controller
@@ -62,9 +62,9 @@ lemlib::ExpoDriveCurve throttle_curve(3,    // joystick deadband out of 127
 );
 
 // Input curve for steer input during driver control
-lemlib::ExpoDriveCurve steer_curve(3,    // joystick deadband out of 127
-                                   10,   // minimum output where drivetrain will move out of 127
-                                   1.019 // expo curve gain
+lemlib::ExpoDriveCurve steer_curve(3,  // joystick deadband out of 127
+                                   10, // minimum output where drivetrain will move out of 127
+                                   1   // expo curve gain
 );
 
 // Create the chassis

@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Image_test",
+    "project_name": "Main.cpp no curve",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -323,7 +323,7 @@
       }
     },
     "upload_options": {
-      "icon": "alien",
+      "icon": "pros",
       "slot": 2
     },
     "use_early_access": false

@@ -18,7 +18,7 @@ rd::Selector autonSelector({//  Initalize Auton Selecton
                             {"Skills", skills}});
 
 rd::Console console; // Initalize RD console
-rd::Image   team_logo(&teamlogo, "Black Kid");
+rd::Image   team_logo(&teamlogo, "Team_Logo");
 
 // Runs initialization code when the program starts; all other competition modes are blocked, keep exec under few seconds
 void initialize() {
