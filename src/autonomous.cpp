@@ -4,6 +4,8 @@
 #include "robot/hardware.hpp"
 
 // To add an auton file use the example below for reference
+// Also check out the LemLib Wiki for further support on this.
+// https://lemlib.readthedocs.io/en/stable/tutorials/7_pure_pursuit.html
 ASSET(example_txt);
 
 void example_auton() {
