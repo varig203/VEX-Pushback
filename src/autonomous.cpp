@@ -4,39 +4,46 @@
 #include "robot/hardware.hpp"
 
 // To add an auton file use the example below for reference
-// Also check out the LemLib Wiki for further support on this.
+// Check out the LemLib Wiki for advanced pure pursuit techniques:
 // https://lemlib.readthedocs.io/en/stable/tutorials/7_pure_pursuit.html
-ASSET(example_txt);
+
+ASSET(example_txt); // Path to the trajectory file for the example auton
 
 void example_auton() {
-    // set chassis pose
+    // Set starting position of the robot (x, y, heading in radians)
     chassis.setPose(0, 0, 0);
-    // lookahead distance: 15 inches
-    // timeout: 2000 ms
+
+    // Follow the trajectory with a lookahead distance of 15 inches
+    // Timeout after 2000 milliseconds if not completed
     chassis.follow(example_txt, 15, 2000);
 }
 
 /**
- * Runs the user autonomous code. This function will be started in its own task
- * with the default priority and stack size whenever the robot is enabled via
- * the Field Management System or the VEX Competition Switch in the autonomous
- * mode. Alternatively, this function may be called in initialize or opcontrol
- * for non-competition testing purposes.
- *
- * If the robot is disabled or communications is lost, the autonomous task||I
- * will be stopped. Re-enabling the robot will restart the task, not re-start it
- * from where it left off.
+ * Runs the user autonomous code.
+ * This task is started automatically during competition autonomous mode.
+ * It will be stopped if the robot is disabled or communication is lost.
+ * On re-enable, it restarts from the beginning.
  */
 
-// Basic Auton.
-// This is looking from the front of the field.
-// functions starting with r are for red side. And b is for blue side.
-void rNear_side_awp() {}
+// Basic autonomous routines
+// Note: function names prefixed with 'r' or 'b' indicate red or blue side of the field
 
-void rFar_side_awp() {}
+void rNear_side_awp() {
+    // TODO: Implement autonomous routine for red near side
+}
 
-void bNear_side_awp() {}
+void rFar_side_awp() {
+    // TODO: Implement autonomous routine for red far side
+}
 
-void bFar_side_awp() {}
+void bNear_side_awp() {
+    // TODO: Implement autonomous routine for blue near side
+}
 
-void skills() {}
+void bFar_side_awp() {
+    // TODO: Implement autonomous routine for blue far side
+}
+
+void skills() {
+    // TODO: Implement skills autonomous routine
+}

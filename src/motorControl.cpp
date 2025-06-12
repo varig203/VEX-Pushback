@@ -27,13 +27,15 @@ void chassis_fn() {
         int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X); // Left and right on the right stick
 
         // Drivetrain control
-        chassis.arcade(leftY, -rightX);
+        chassis.arcade(leftY, -rightX); // Change arcade to curve if you want curve drive and vice versa.
+
+        // detects if L2 is pressed
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-            left_motors.set_voltage_limit(12000);
-            right_motors.set_voltage_limit(12000);
-            controller.rumble("-");
+            left_motors.set_voltage_limit(12000);  // changes to 12 volts once pressed
+            right_motors.set_voltage_limit(12000); // AKA 600 rpm for blue carts
+            controller.rumble("-");                // rumbles the controller
         } else {
-            left_motors.set_voltage_limit(6000);
+            left_motors.set_voltage_limit(6000); // changes to 300 rpm aka 50% power.
             right_motors.set_voltage_limit(6000);
         }
         pros::delay(20);

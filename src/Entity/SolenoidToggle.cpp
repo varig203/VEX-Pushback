@@ -2,8 +2,14 @@
 #include "main.h"
 
 /*****************************************************
- *                       NOTE:                       *
- * SOLENOIDS CANNOT SEND DATA AND CAN ONLY READ DATA *
+ *                 entity::Piston Class               *
+ *                                                    *
+ * This class extends pros::adi::DigitalOut to        *
+ * represent a solenoid piston, adding a toggle()     *
+ * method to switch between ON/OFF states easily.     *
+ *                                                    *
+ * Note: Solenoids can only output signals and cannot *
+ *            send data back (read input).            *
  *****************************************************/
 
 // Reusable function as this is used everytime to switch the state of a piston.

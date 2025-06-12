@@ -6,45 +6,49 @@
 #include "teamlogo.h"
 
 /**********************************************************************
- * WELCOME TO ENTITY TEMPLATE! CHECKOUT THE GITHUB FOR DOCUMENTATION. *
- *             HTTPS://GITHUB.COM/VARIG203/ENTITY-TEMPLATE            *
+ * WELCOME TO ENTITY TEMPLATE! CHECK OUT THE GITHUB FOR DOCUMENTATION.*
+ *          HTTPS://GITHUB.COM/VARIG203/ENTITY-TEMPLATE              *
  **********************************************************************/
 
-rd::Selector autonSelector({//  Initalize Auton Selecton
-                            {"Red Ring AWP", rFar_side_awp},
+// Initialize the autonomous selector with named routines
+rd::Selector autonSelector({{"Red Ring AWP", rFar_side_awp},
                             {"Red Goal AWP", rNear_side_awp},
                             {"Blue Ring AWP", bFar_side_awp},
                             {"Blue Goal AWP", bNear_side_awp},
                             {"Skills", skills}});
 
-rd::Console console; // Initalize RD console
-rd::Image   team_logo(&teamlogo, "Team_Logo");
+rd::Console console;                           // Initialize RoboDash console for debug output
+rd::Image   team_logo(&teamlogo, "Team_Logo"); // Load and label team logo image
 
-// Runs initialization code when the program starts; all other competition modes are blocked, keep exec under few seconds
+// Called once when the program starts; keep this quick!
 void initialize() {
-    chassis.calibrate(); // calibrate sensors
+    chassis.calibrate(); // Calibrate sensors (IMU, encoders, etc.)
 
-    team_logo.focus(); // Focuses Image.
+    team_logo.focus(); // Display the team logo on the screen
 }
 
-// Runs while the robot is disabled, following autonomous or opcontrol, and exits when the robot is enabled.
+// Called repeatedly while the robot is disabled
 void disabled() {
-    controller.print(0, 0, "Robot Disabled"); // incase the driver can't see the warning
-    controller.rumble(".-.-.-.-");            // Non-verbal warning to driver
+    controller.print(0, 0, "Robot Disabled"); // Display message to driver
+    controller.rumble(".-.-.-.-");            // Rumble pattern to alert driver
 }
 
-// Runs after initalize and before auton. only when connected to field control
-void competition_initialize() {}
+// Called once when connected to field control but before autonomous starts
+void competition_initialize() {
+    // Optional: Add any pre-autonomous initialization here
+}
 
-// Runs selected auton. Edit your autons in autonomous.cpp
+// Autonomous mode: runs selected autonomous routine
 void autonomous() {
     autonSelector.run_auton();
 }
 
-// Runs the operator control code in its own task when the robot is enabled, stops if disabled or comms lost.
+// Operator control mode: runs driver control tasks concurrently
 void opcontrol() {
-    // These just run the functions on seperate threads for async1
+    // Run chassis control in its own task/thread
     pros::Task chassisControl(chassis_fn);
+    // Run solenoid control in its own task/thread
     pros::Task solenoidControl(solenoidControl_fn);
+    // Run motor control in its own task/thread
     pros::Task motorControl(motorControl_fn);
 }
