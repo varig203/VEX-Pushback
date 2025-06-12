@@ -1,5 +1,5 @@
-#include "robot/hardware.hpp"
 #include "Entity/api.hpp"
+#include "robot/hardware.hpp"
 
 // Motor groups
 pros::MotorGroup left_motors({1, 2}, pros::MotorGearset::blue);     // lLeft Chassis
@@ -20,7 +20,7 @@ lemlib::TrackingWheel horizontal_tracking_wheel(&horizontal_encoder, lemlib::Omn
 // Drivetrain settings (Change to your drivetrain)
 lemlib::Drivetrain  drivetrain(&left_motors,               // left motor group
                                &right_motors,              // right motor group
-                               16,                         // 10 inch track width
+                               16,                         // 16 inch track width
                                lemlib::Omniwheel::NEW_325, // using new 4" omnis
                                600,                        // drivetrain rpm is 360
                                2                           // horizontal drift is 2 (for now)
