@@ -2,8 +2,8 @@
 #include "robot/hardware.hpp"
 
 // Motor groups
-pros::MotorGroup left_motors({1, 2}, pros::MotorGearset::blue);     // Left Chassis
-pros::MotorGroup right_motors({-9, -10}, pros::MotorGearset::blue); // Right Chassis
+pros::MotorGroup left_motors({1, 2, 3}, pros::MotorGearset::blue);     // Left Chassis
+pros::MotorGroup right_motors({-8, -9, -10}, pros::MotorGearset::blue); // Right Chassis
 pros::Motor      example_motor(20, pros::MotorGearset::blue);       // example motor
 
 // Controller and Pistons
