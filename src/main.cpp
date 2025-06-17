@@ -29,7 +29,7 @@ void initialize() {
 
 // Called repeatedly while the robot is disabled
 void disabled() {
-    controller.print(0, 0, "Robot Disabled"); // Display message to driver
+    controller.print(0, 0, "Robot Crippled"); // Display message to driver
     controller.rumble(".-.-.-.-");            // Rumble pattern to alert driver
 }
 
